@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="description" content="Excel Expert Academy - Domine Excel e transforme sua carreira">
+<title>Excel Expert Academy | Curso de Excel Profissional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0c12;
+    color: #eef2ff;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(46,204,113,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(46,204,113,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+}
+.hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    background: radial-gradient(circle at 70% 20%, rgba(46,204,113,0.08), rgba(10,12,18,0.96)),
+                linear-gradient(125deg, #0c1122, #03050b);
+    isolation: isolate;
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to top, #0a0c12, transparent);
+    pointer-events: none;
+}
+.hero h1 {
+    font-size: 3.6rem;
+    background: linear-gradient(135deg, #FFFFFF, #2ecc71, #1abc9c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+.hero .tagline {
+    font-size: 1.25rem;
+    margin: 1rem auto;
+    color: #cbd5e6;
+    max-width: 750px;
+    font-weight: 500;
+}
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.4rem; }
+    .hero .tagline { font-size: 1rem; }
+}
+.section {
+    padding: 80px 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+.plan-card {
+    background: rgba(18,25,45,0.75);
+    backdrop-filter: blur(12px);
+    border-radius: 2rem;
+    padding: 2rem 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(46,204,113,0.3);
+    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+}
+.plan-card:hover {
+    transform: translateY(-8px);
+    border-color: #2ecc71;
+    box-shadow: 0 25px 45px -12px rgba(46,204,113,0.25);
+}
+.plan-card.popular {
+    border: 2px solid #2ecc71;
+    background: linear-gradient(145deg, #112a2a, #0a121f);
+    position: relative;
+}
+.plan-price {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #2ecc71;
+    margin: 1rem 0;
+}
+.btn-primary {
+    background: linear-gradient(105deg, #1e6b3c, #2ecc71);
+    border: none;
+    font-weight: 600;
+    padding: 0.9rem 2rem;
+    border-radius: 60px;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 6px 14px rgba(46,204,113,0.3);
+}
+.btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 22px rgba(46,204,113,0.5);
+}
+.btn-outline {
+    background: transparent;
+    border: 1.5px solid #2ecc71;
+    color: #2ecc71;
+    padding: 0.7rem 1.5rem;
+    border-radius: 60px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-outline:hover {
+    background: #2ecc7122;
+}
+.form-container {
+    background: rgba(15,23,42,0.7);
+    backdrop-filter: blur(20px);
+    border-radius: 2rem;
+    padding: 2rem;
+    border: 1px solid rgba(46,204,113,0.4);
+    max-width: 950px;
+    margin: 0 auto;
+}
+.input-field {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 60px;
+    border: 1px solid #2d3a4e;
+    background: #0f172a;
+    color: white;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+.input-field:focus {
+    border-color: #2ecc71;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(46,204,113,0.2);
+}
+.payment-methods {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem 0;
+}
+.pay-card {
+    background: #0f172a;
+    border-radius: 3rem;
+    padding: 12px 28px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid #2ecc71;
+    transition: 0.2s;
+}
+.pay-card:hover, .pay-card.active {
+    background: #2ecc71;
+    color: #070b17;
+    transform: scale(1.03);
+}
+.qr-container {
+    text-align: center;
+    background: white;
+    border-radius: 28px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    color: #0f172a;
+}
+.qr-code {
+    background: white;
+    border-radius: 20px;
+    padding: 10px;
+    display: inline-block;
+}
+.chave-pix {
+    background: #eef2ff;
+    padding: 14px;
+    border-radius: 24px;
+    word-break: break-all;
+    margin: 15px 0;
+}
+.ia-fab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 1000;
+}
+.ia-btn {
+    background: linear-gradient(135deg, #1e6b3c, #2ecc71);
+    width: 56px;
+    height: 56px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    border: none;
+    font-size: 26px;
+    transition: 0.2s;
+}
+.ia-btn:hover {
+    transform: scale(1.05);
+}
+.ia-chat-window {
+    position: fixed;
+    bottom: 100px;
+    right: 28px;
+    width: 360px;
+    background: #101826;
+    border-radius: 28px;
+    backdrop-filter: blur(12px);
+    border: 1px solid #2ecc71;
+    box-shadow: 0 20px 35px -12px black;
+    z-index: 1001;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+.ia-chat-window.open { display: flex; }
+.ia-header {
+    background: #1e2a3a;
+    padding: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    border-bottom: 1px solid #2ecc71;
+}
+.ia-messages {
+    height: 320px;
+    overflow-y: auto;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #0c1220;
+}
+.ia-input-area {
+    display: flex;
+    padding: 12px;
+    background: #0a0f1c;
+    gap: 8px;
+    border-top: 1px solid #2ecc7133;
+}
+.message-user {
+    background: #2ecc71;
+    color: #000;
+    align-self: flex-end;
+    padding: 8px 14px;
+    border-radius: 20px;
+    max-width: 85%;
+}
+.message-bot {
+    background: #1e2a3a;
+    align-self: flex-start;
+    padding: 8px 14px;
+    border-radius: 20px;
+    max-width: 85%;
+}
+.suggestion-btn {
+    background: #1e2a3a;
+    border: 1px solid #2ecc71;
+    border-radius: 30px;
+    padding: 4px 14px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    margin: 3px;
+}
+.modal-dashboard {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.96);
+    backdrop-filter: blur(12px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dashboard-content {
+    background: linear-gradient(135deg, #0b1120, #121b2d);
+    max-width: 700px;
+    width: 90%;
+    border-radius: 2rem;
+    padding: 2rem;
+    border: 2px solid #2ecc71;
+    position: relative;
+    animation: fadeUp 0.3s;
+}
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a2a36;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 60px;
+    z-index: 3000;
+    border-left: 5px solid #2ecc71;
+    animation: fadeSlide 0.3s;
+}
+@keyframes fadeSlide {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px);}
+    to { opacity: 1; transform: translateX(-50%) translateY(0);}
+}
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.94);
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid #2ecc7133;
+    border-top-color: #2ecc71;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.6s ease;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+.float-wpp {
+    position: fixed;
+    bottom: 28px;
+    left: 28px;
+    background: #25D366;
+    border-radius: 60px;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: black;
+    z-index: 99;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    text-decoration: none;
+    transition: 0.2s;
+}
+.float-wpp:hover { transform: scale(1.02); }
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <div>
+        <h1 class="reveal">📊 Excel Expert Academy</h1>
+        <p class="tagline reveal">Transforme dados em decisões. Acelere sua carreira. Domine o Excel como um líder.</p>
+        <button class="btn-primary reveal" id="verPlanosBtn">🚀 VER PLANOS</button>
+    </div>
+</section>
+
+<div class="section" id="plans-section">
+    <h2 style="text-align:center; font-size:2rem; margin-bottom:2rem;">🎯 Escolha o seu plano</h2>
+    <div class="plans-container" style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
+        <div class="plan-card reveal">
+            <div class="plan-name" style="font-size:1.6rem; font-weight:700;">📘 Básico</div>
+            <div class="plan-price">R$ 49,90</div>
+            <ul style="list-style:none; margin: 1rem 0; text-align:left;">
+                <li>✓ Fundamentos + Fórmulas essenciais</li>
+                <li>✓ Formatação profissional</li>
+                <li>✓ Certificado básico</li>
+                <li>✓ Material em PDF</li>
+                <li>✓ Suporte por e-mail</li>
+            </ul>
+            <button class="btn-primary" style="width:100%;" onclick="selectPlan('Básico', 49.90)">ESCOLHER PLANO</button>
+        </div>
+        <div class="plan-card popular reveal">
+            <div style="position:absolute; top:-12px; right:20px; background:#e74c3c; padding:4px 14px; border-radius:40px; font-size:0.8rem; font-weight:bold;">🔥 MAIS VENDIDO</div>
+            <div class="plan-name" style="font-size:1.6rem;">🚀 Profissional</div>
+            <div class="plan-price">R$ 110,80</div>
+            <ul style="list-style:none; margin:1rem 0; text-align:left;">
+                <li>✓ Tudo do Básico</li>
+                <li>✓ Tabelas Dinâmicas + Dashboards</li>
+                <li>✓ Power Query</li>
+                <li>✓ Certificado Profissional</li>
+                <li>✓ Suporte prioritário</li>
+            </ul>
+            <button class="btn-primary" style="width:100%;" onclick="selectPlan('Profissional', 110.80)">ESCOLHER PLANO</button>
+        </div>
+        <div class="plan-card reveal">
+            <div class="plan-name">🏆 Premium</div>
+            <div class="plan-price">R$ 260,40</div>
+            <ul style="list-style:none; margin:1rem 0; text-align:left;">
+                <li>✓ Tudo do Profissional</li>
+                <li>✓ VBA + Macros (Automação)</li>
+                <li>✓ Power BI + Mentoria ao vivo</li>
+                <li>✓ Grupo VIP + Certificado Premium</li>
+                <li>✓ Suporte 24/7 WhatsApp</li>
+            </ul>
+            <button class="btn-primary" style="width:100%;" onclick="selectPlan('Premium', 260.40)">ESCOLHER PLANO</button>
+        </div>
+    </div>
+</div>
+
+<div class="section" id="checkout-section">
+    <h2 class="reveal" id="checkoutTitle" style="text-align:center;">💳 Finalize sua Matrícula</h2>
+    <div class="form-container">
+        <div style="display:flex; gap:12px; justify-content:center; margin-bottom:30px;">
+            <button id="btnTabPagamento" class="btn-primary" style="background:#217346;">🛒 Pagamento</button>
+            <button id="btnTabLogin" class="btn-outline">📚 Já sou aluno</button>
+        </div>
+        <div id="painelCompra">
+            <div style="background:#1e3a2f; padding:12px; border-radius:60px; text-align:center; margin-bottom:20px;" id="selectedPlanDisplay">⚡ Nenhum plano selecionado</div>
+            <div style="display:grid; gap:1rem;">
+                <input type="text" id="nomeCompleto" class="input-field" placeholder="Nome completo *">
+                <input type="email" id="emailCompra" class="input-field" placeholder="E-mail *">
+                <input type="text" id="cpf" class="input-field" placeholder="CPF *" maxlength="14">
+                <input type="date" id="dataNascimento" class="input-field">
+                <input type="tel" id="telefone" class="input-field" placeholder="WhatsApp com DDD *">
+                <input type="password" id="senhaCadastro" class="input-field" placeholder="Crie uma senha * (mínimo 6 caracteres)">
+            </div>
+            <h3 style="margin: 1.5rem 0 0.5rem;">💳 Forma de Pagamento</h3>
+            <div class="payment-methods">
+                <div class="pay-card" onclick="showPaymentMethod('pix')">📱 PIX</div>
+                <div class="pay-card" onclick="showPaymentMethod('card')">💳 Cartão de Crédito</div>
+                <div class="pay-card" onclick="showPaymentMethod('boleto')">📄 Boleto</div>
+            </div>
+            <div id="pixArea" style="display:none;"></div>
+            <div id="cardArea" style="display:none;">
+                <div style="border:1px solid #2ecc71; border-radius:24px; padding:1.5rem; margin-top:1rem;">
+                    <input type="text" id="cardNumber" class="input-field" placeholder="Número do Cartão" maxlength="19">
+                    <input type="text" id="cardName" class="input-field" placeholder="Nome no Cartão">
+                    <div style="display:flex; gap:12px; margin-top:12px;">
+                        <input type="text" id="cardValidade" class="input-field" placeholder="MM/AA" maxlength="5">
+                        <input type="text" id="cardCvv" class="input-field" placeholder="CVV" maxlength="4">
+                    </div>
+                    <select id="cardParcelas" class="input-field" style="margin-top:12px;"></select>
+                    <button class="btn-primary" style="width:100%; margin-top:20px;" onclick="processarPagamentoCartao()">💳 Pagar com Cartão</button>
+                </div>
+            </div>
+            <div id="boletoArea" style="display:none;">
+                <div class="qr-container" style="background:#0f172a; color:white;">
+                    <p>📄 Boleto Bancário</p>
+                    <div style="background:#0a0f1c; padding:1rem; border-radius:20px;">
+                        <p style="word-break:break-all;">34191.79001 01043.210047 21020.390008 1 92780000026040</p>
+                        <button class="btn-primary" onclick="gerarBoleto()">📄 Gerar Boleto</button>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:1.5rem; text-align:center; color:#8ba3b9; font-size:0.8rem;">🔒 Pagamento 100% seguro · Garantia de 7 dias</div>
+        </div>
+        <div id="painelLogin" style="display:none;">
+            <h3>🔐 Acesso com verificação</h3>
+            <input type="email" id="loginEmail" class="input-field" placeholder="E-mail cadastrado">
+            <input type="password" id="loginSenha" class="input-field" placeholder="Senha" style="margin-top:12px;">
+            <input type="text" id="loginCpf" class="input-field" placeholder="CPF para verificação" maxlength="14">
+            <button class="btn-primary" style="width:100%; margin-top:20px;" onclick="fazerLoginComCpf()">Entrar</button>
+            <a onclick="showForgotPassword()" style="display:block; text-align:center; margin-top:1rem; cursor:pointer; color:#2ecc71;">🔑 Esqueci minha senha</a>
+        </div>
+    </div>
+</div>
+
+<!-- IA Minimalista -->
+<div class="ia-fab">
+    <div class="ia-btn" id="iaFabBtn">🤖</div>
+    <div class="ia-chat-window" id="iaChatWindow">
+        <div class="ia-header"><span>🤖 Assistente Excel Expert</span><span style="cursor:pointer;" id="closeChatBtn">✕</span></div>
+        <div class="ia-messages" id="iaMessages">
+            <div class="message-bot">Olá! Sou seu assistente. Posso ajudar com planos, preços e pagamentos.</div>
+            <div><button class="suggestion-btn" onclick="sendSuggestion('Quanto custa?')">💰 Preços</button><button class="suggestion-btn" onclick="sendSuggestion('Diferença de planos')">📊 Diferença</button><button class="suggestion-btn" onclick="sendSuggestion('Aceita PIX?')">💳 Pagamento</button></div>
+        </div>
+        <div class="ia-input-area"><input type="text" id="iaQuestion" placeholder="Digite sua dúvida..." class="input-field" style="flex:1; margin:0;"><button class="btn-primary" style="padding:0 20px;" onclick="askIA()">Enviar</button></div>
+    </div>
+</div>
+<a href="https://wa.me/5517997729758" target="_blank" class="float-wpp">💬 Suporte WhatsApp</a>
+<footer style="text-align:center; padding:2rem; background:#03050a;"><p>© 2025 Excel Expert Academy - Todos os direitos reservados</p></footer>
+
+<script>
+// ==================== LINKS PDF ====================
+const LINKS_PDF = {
+    basico: "https://drive.google.com/file/d/1MyJ-u9ImBrPEaZRf5x8qYjJT54XhiUhg/view?usp=sharing",
+    profissional: "https://drive.google.com/file/d/1fKn4qrDwwbR2msf42lctDFIxO1pm7THH/view?usp=sharing",
+    premium: "https://drive.google.com/file/d/1SoqR27z2sMsiQqjPvHQ2Ijx-dN9FdZQh/view?usp=sharing"
+};
+
+// PAYLOADS PIX CORRETOS (fornecidos e validados)
+const PAYLOADS_PIX = {
+    basico: "00020101021126330014br.gov.bcb.pix011123756167828520400005303986540549.905802BR5920EDUARDO S DOS SANTOS6013SAO JOSE DO R62070503***6304AA1C",
+    profissional: "00020101021126330014br.gov.bcb.pix0111237561678285204000053039865406110.805802BR5920EDUARDO S DOS SANTOS6013SAO JOSE DO R62070503***6304C1F0",
+    premium: "00020101021126330014br.gov.bcb.pix0111237561678285204000053039865406260.405802BR5920EDUARDO S DOS SANTOS6013SAO JOSE DO R62070503***6304366C"
+};
+
+let selectedPlanName = "", selectedPlanPrice = 0;
+let usuariosCadastrados = [];
+
+// ==================== PLANOS E PIX ====================
+function selectPlan(plan, price) {
+    selectedPlanName = plan;
+    selectedPlanPrice = price;
+    document.getElementById("selectedPlanDisplay").innerHTML = `✅ Plano selecionado: <strong>${plan}</strong> - R$ ${price.toFixed(2)}`;
+    document.getElementById("checkoutTitle").innerHTML = `💳 Finalizar Compra - ${plan}`;
+    document.getElementById("checkout-section").scrollIntoView({ behavior: "smooth" });
+    atualizarParcelas();
+    if (document.getElementById("pixArea").style.display === 'block') gerarConteudoPix();
+}
+
+function atualizarParcelas() {
+    let sel = document.getElementById("cardParcelas");
+    if (sel && selectedPlanPrice) {
+        sel.innerHTML = '';
+        for (let i=1; i<=12; i++) {
+            let val = (selectedPlanPrice / i).toFixed(2);
+            sel.innerHTML += `<option value="${i}">${i}x de R$ ${val}</option>`;
+        }
+    }
+}
+
+function gerarConteudoPix() {
+    if (!selectedPlanName) { alert("Selecione um plano primeiro"); return; }
+    let payload = "";
+    if (selectedPlanName === 'Básico') payload = PAYLOADS_PIX.basico;
+    else if (selectedPlanName === 'Profissional') payload = PAYLOADS_PIX.profissional;
+    else payload = PAYLOADS_PIX.premium;
+    
+    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(payload)}`;
+    const valorStr = selectedPlanPrice.toFixed(2).replace('.',',');
+    const html = `
+        <div class="qr-container">
+            <p><strong>📱 Pague com PIX - ${selectedPlanName} - R$ ${valorStr}</strong></p>
+            <div class="qr-code"><img src="${qrCodeUrl}" width="240" height="240" alt="QR Code PIX" style="max-width:100%;"></div>
+            <div class="chave-pix">
+                <strong>🔑 Chave (CPF):</strong> 237.561.678-28<br>
+                <strong>👤 Beneficiário:</strong> EDUARDO SILVA DOS SANTOS<br>
+                <button class="btn-primary" style="margin-top:8px;" onclick="copiarChavePix()">📋 Copiar CPF</button>
+                <button class="btn-primary" style="margin-top:8px; margin-left:8px;" onclick="copiarPayloadPix()">📋 Copiar Payload (Copia&Cola)</button>
+            </div>
+            <p style="font-size:0.8rem; margin-top:10px;">Após o pagamento, clique em "Confirmar Pagamento"</p>
+            <button class="btn-primary" style="margin-top:10px;" onclick="confirmarPagamentoPIX()">✅ Confirmar Pagamento PIX</button>
+        </div>
+    `;
+    document.getElementById("pixArea").innerHTML = html;
+    window.payloadAtual = payload;
+}
+
+function copiarChavePix() { navigator.clipboard.writeText("237.561.678-28"); showToast("✅ CPF copiado! Use como chave PIX."); }
+function copiarPayloadPix() { if(window.payloadAtual) { navigator.clipboard.writeText(window.payloadAtual); showToast("✅ Payload Pix copiado! Cole no app do banco."); } else showToast("Payload não disponível", "error"); }
+
+function showPaymentMethod(method) {
+    document.getElementById("pixArea").style.display = method === 'pix' ? 'block' : 'none';
+    document.getElementById("cardArea").style.display = method === 'card' ? 'block' : 'none';
+    document.getElementById("boletoArea").style.display = method === 'boleto' ? 'block' : 'none';
+    if (method === 'pix') gerarConteudoPix();
+}
+
+function confirmarPagamentoPIX() { if(selectedPlanName) processarPagamentoReal('pix'); else showToast("Escolha um plano", 'error'); }
+function processarPagamentoCartao() { 
+    const n = document.getElementById("cardNumber").value;
+    if(!n || n.replace(/\s/g,'').length<16) { showToast("Cartão inválido",'error'); return; }
+    processarPagamentoReal('card');
+}
+function gerarBoleto() { processarPagamentoReal('boleto'); }
+
+// ==================== CADASTRO E LOGIN ====================
+function loadUsers() {
+    const stored = localStorage.getItem("excel_usuarios_final_v10");
+    if(stored) usuariosCadastrados = JSON.parse(stored);
+    else {
+        usuariosCadastrados = [{ id: Date.now(), email: "demo@excel.com", nome: "Aluno Demo", cpf: "12345678901", dataNascimento: "1990-01-01", plano: "Premium", senhaHash: btoa("123456"+"excel_salt_2024"), dataCompra: new Date().toISOString() }];
+        saveUsers();
+    }
+}
+function saveUsers() { localStorage.setItem("excel_usuarios_final_v10", JSON.stringify(usuariosCadastrados)); }
+function hashPassword(pw) { return btoa(pw + "excel_salt_2024"); }
+function verifyPassword(pw, hash) { return hashPassword(pw) === hash; }
+
+function validarCPF(cpf) {
+    cpf = cpf.replace(/\D/g,'');
+    if(cpf.length!==11) return false;
+    if(/^(\d)\1{10}$/.test(cpf)) return false;
+    let sum=0, rest;
+    for(let i=1;i<=9;i++) sum += parseInt(cpf[i-1])*(11-i);
+    rest = (sum*10)%11; if(rest===10||rest===11) rest=0;
+    if(rest!==parseInt(cpf[9])) return false;
+    sum=0;
+    for(let i=1;i<=10;i++) sum += parseInt(cpf[i-1])*(12-i);
+    rest = (sum*10)%11; if(rest===10||rest===11) rest=0;
+    if(rest!==parseInt(cpf[10])) return false;
+    return true;
+}
+
+function calcularIdade(dataNasc) {
+    const hoje = new Date();
+    const nasc = new Date(dataNasc);
+    let idade = hoje.getFullYear() - nasc.getFullYear();
+    const m = hoje.getMonth() - nasc.getMonth();
+    if(m<0 || (m===0 && hoje.getDate()<nasc.getDate())) idade--;
+    return idade;
+}
+
+function processarPagamentoReal(method) {
+    if(!selectedPlanName) {showToast("Selecione um plano",'error'); return;}
+    const nome = document.getElementById("nomeCompleto").value.trim();
+    const email = document.getElementById("emailCompra").value.trim();
+    const cpf = document.getElementById("cpf").value;
+    const dataNasc = document.getElementById("dataNascimento").value;
+    const telefone = document.getElementById("telefone").value.trim();
+    const senha = document.getElementById("senhaCadastro").value;
+    if(!nome || nome.length<3) { showToast("Nome inválido",'error'); return; }
+    if(!email || !email.includes('@')) { showToast("E-mail inválido",'error'); return; }
+    if(!validarCPF(cpf)) { showToast("CPF inválido",'error'); return; }
+    if(!dataNasc) { showToast("Data de nascimento obrigatória",'error'); return; }
+    if(calcularIdade(dataNasc) < 18) { showToast("Você deve ter pelo menos 18 anos",'error'); return; }
+    if(!telefone || telefone.replace(/\D/g,'').length<10) { showToast("WhatsApp inválido",'error'); return; }
+    if(!senha || senha.length<6) { showToast("Senha deve ter mínimo 6 caracteres",'error'); return; }
+    if(usuariosCadastrados.find(u=>u.email===email)) { showToast("E-mail já cadastrado",'error'); toggleTabLogin(); return; }
+    showLoading(true);
+    setTimeout(() => {
+        let linkPDF = selectedPlanName==='Básico' ? LINKS_PDF.basico : (selectedPlanName==='Profissional' ? LINKS_PDF.profissional : LINKS_PDF.premium);
+        const novo = { id: Date.now(), email, nome, cpf: cpf.replace(/\D/g,''), dataNascimento: dataNasc, telefone, plano: selectedPlanName, senhaHash: hashPassword(senha), dataCompra: new Date().toISOString(), pagamento: method };
+        usuariosCadastrados.push(novo); saveUsers();
+        showLoading(false);
+        showSuccessModal(novo, linkPDF);
+        showToast(`✅ Pagamento aprovado! Plano ${selectedPlanName} ativado.`);
+    }, 2000);
+}
+
+function showSuccessModal(user, pdfLink) {
+    const modalDiv = document.createElement('div'); modalDiv.className = 'modal-dashboard';
+    modalDiv.innerHTML = `
+        <div class="dashboard-content">
+            <div style="position:absolute; top:16px; right:24px; font-size:28px; cursor:pointer;" onclick="this.closest('.modal-dashboard').remove()">&times;</div>
+            <h2 style="color:#2ecc71;">🎉 Parabéns, ${user.nome}!</h2>
+            <p>✅ Matrícula na <strong>Excel Expert Academy</strong> confirmada! Plano ${user.plano}.</p>
+            <a href="${pdfLink}" target="_blank" class="btn-primary" style="display:inline-block; margin:20px 0;">📥 ACESSAR MATERIAL</a>
+            <div style="background:#111c2c; padding:1rem; border-radius:1rem;"><strong>🔐 Credenciais:</strong><br>E-mail: ${user.email}<br>Senha: (a que você criou)</div>
+            <button class="btn-primary" onclick="this.closest('.modal-dashboard').remove()">Fechar</button>
+        </div>
+    `;
+    document.body.appendChild(modalDiv);
+}
+
+function fazerLoginComCpf() {
+    const email = document.getElementById("loginEmail").value.trim();
+    const senha = document.getElementById("loginSenha").value;
+    const cpf = document.getElementById("loginCpf").value.replace(/\D/g,'');
+    const user = usuariosCadastrados.find(u=> u.email === email);
+    if(!user || user.cpf !== cpf || !verifyPassword(senha, user.senhaHash)) { showToast("Credenciais inválidas",'error'); return; }
+    let link = user.plano==='Básico' ? LINKS_PDF.basico : (user.plano==='Profissional' ? LINKS_PDF.profissional : LINKS_PDF.premium);
+    showSuccessModal(user, link);
+}
+
+function showToast(msg, type='success') { let d=document.createElement('div'); d.className='toast'; d.innerText=(type==='success'?'✅':'⚠️')+' '+msg; document.body.appendChild(d); setTimeout(()=>d.remove(),3500); }
+function showLoading(show) { let el=document.querySelector('.loading-overlay'); if(show && !el) { let o=document.createElement('div'); o.className='loading-overlay'; o.innerHTML='<div class="spinner"></div><p>Processando pagamento...</p>'; document.body.appendChild(o); } else if(!show && el) el.remove(); }
+function toggleTabLogin() { document.getElementById("painelCompra").style.display="none"; document.getElementById("painelLogin").style.display="block"; }
+document.getElementById("btnTabPagamento").onclick = () => { document.getElementById("painelCompra").style.display="block"; document.getElementById("painelLogin").style.display="none"; };
+document.getElementById("btnTabLogin").onclick = toggleTabLogin;
+document.getElementById("verPlanosBtn").onclick = () => document.getElementById("plans-section").scrollIntoView({behavior:"smooth"});
+
+// ==================== IA CHAT ====================
+const iaBtn = document.getElementById("iaFabBtn"), iaWindow = document.getElementById("iaChatWindow"), closeChat = document.getElementById("closeChatBtn");
+iaBtn.onclick = () => iaWindow.classList.toggle("open");
+closeChat.onclick = () => iaWindow.classList.remove("open");
+function askIA() { let input=document.getElementById("iaQuestion"), q=input.value.trim(); if(!q) return; addMessage(q,'user'); input.value=''; setTimeout(()=>addMessage(getAIResponse(q),'bot'),400); }
+function addMessage(txt,sender) { let container=document.getElementById("iaMessages"), div=document.createElement('div'); div.className=sender==='user'?'message-user':'message-bot'; div.innerText=txt; container.appendChild(div); container.scrollTop=container.scrollHeight; }
+function getAIResponse(q) { let lq=q.toLowerCase(); if(lq.includes('preço')||lq.includes('custa')) return "💰 Planos: Básico R$49,90 | Profissional R$110,80 | Premium R$260,40"; if(lq.includes('diferença')) return "📊 Básico: fundamentos. Profissional: +Dashboards+Power Query. Premium: +VBA+Power BI+Mentoria."; if(lq.includes('pix')) return "💳 QR Code PIX gerado com payload oficial do beneficiário Eduardo Silva dos Santos (CPF 237.561.678-28)."; return "Posso ajudar com preços, diferenças entre planos ou formas de pagamento!"; }
+function sendSuggestion(text) { document.getElementById("iaQuestion").value=text; askIA(); }
+
+// ==================== MÁSCARAS ====================
+document.getElementById("cpf")?.addEventListener("input", function(e){ let v=e.target.value.replace(/\D/g,''); if(v.length>11) v=v.slice(0,11); e.target.value=v.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2'); });
+document.getElementById("telefone")?.addEventListener("input", function(e){ let v=e.target.value.replace(/\D/g,''); if(v.length===10) e.target.value=v.replace(/(\d{2})(\d{4})(\d{4})/,'($1) $2-$3'); else if(v.length===11) e.target.value=v.replace(/(\d{2})(\d{5})(\d{4})/,'($1) $2-$3'); });
+document.getElementById("cardNumber")?.addEventListener("input", function(e){ let v=e.target.value.replace(/\D/g,''); e.target.value=v.replace(/(\d{4})(?=\d)/g,'$1 '); });
+document.getElementById("cardValidade")?.addEventListener("input",function(e){ let v=e.target.value.replace(/\D/g,''); if(v.length>=3) e.target.value=v.slice(0,2)+'/'+v.slice(2,4); });
+
+// Animação reveal
+const reveals = document.querySelectorAll('.reveal');
+function animateOnScroll() { let t=window.innerHeight*0.85; reveals.forEach(el=>{ if(el.getBoundingClientRect().top<t) el.classList.add('active'); }); }
+window.addEventListener('load', () => { loadUsers(); animateOnScroll(); });
+window.addEventListener('scroll', animateOnScroll);
+
+// Expor funções globais
+window.selectPlan = selectPlan; window.showPaymentMethod = showPaymentMethod; window.copiarChavePix = copiarChavePix; window.copiarPayloadPix = copiarPayloadPix;
+window.confirmarPagamentoPIX = confirmarPagamentoPIX; window.processarPagamentoCartao = processarPagamentoCartao; window.gerarBoleto = gerarBoleto;
+window.fazerLoginComCpf = fazerLoginComCpf; window.showForgotPassword = () => showToast("Recuperação via WhatsApp",'error');
+window.sendSuggestion = sendSuggestion; window.askIA = askIA;
+</script>
+</body>
+</html>
